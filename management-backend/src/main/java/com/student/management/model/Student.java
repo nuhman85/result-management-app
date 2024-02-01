@@ -19,7 +19,7 @@ public class Student {
     private Long id;
     private String firstName;
     private String familyName;
-    @JsonFormat(pattern="MM-dd-yyyy")
+    @JsonFormat(pattern = "MM-dd-yyyy")
     @NonNull
     private LocalDate dateOfBirth;
     private String email;

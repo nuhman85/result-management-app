@@ -11,11 +11,11 @@ public class Result {
     @Id
     @GeneratedValue
     private Long id;
-    @ManyToOne()
-    @JoinColumn(name = "course_id", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "course_id")
     private Course course;
-    @ManyToOne()
-    @JoinColumn(name = "course_id", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "student_id")
     private Student student;
     private String grade;
 

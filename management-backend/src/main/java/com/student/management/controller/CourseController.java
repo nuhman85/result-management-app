@@ -1,31 +1,31 @@
 package com.student.management.controller;
 
-import com.student.management.model.Student;
-import com.student.management.service.StudentService;
+import com.student.management.model.Course;
+import com.student.management.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
-public class StudentController {
+public class CourseController {
 
     @Autowired
-    private StudentService studentService;
-    @PostMapping(path = "/addstudent")
-    public Student addStudent(@RequestBody Student student){
-        return studentService.addStudent(student);
+    private CourseService courseService;
+
+    @PostMapping(path = "/addcourse")
+    public Course addCourse(@RequestBody Course course) {
+        return courseService.addCourse(course);
     }
 
-    @GetMapping(path = "/student")
-    public List<Student> getStudents(){
-        return studentService.getAllStudents();
+    @GetMapping(path = "/course")
+    public List<Course> getCourses() {
+        return courseService.getAllCourses();
     }
 
-    @DeleteMapping(path = "/student/{id}")
-    public String deleteStudent(@PathVariable @NonNull Long id) {
-        return studentService.deleteStudent(id);
+    @DeleteMapping(path = "/course/{id}")
+    public String deleteCourse(@PathVariable @NonNull Long id) {
+        return courseService.deleteCourse(id);
     }
 }

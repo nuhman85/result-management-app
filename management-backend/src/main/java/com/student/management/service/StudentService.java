@@ -15,7 +15,7 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
-    public Student addStudent(Student student){
+    public Student addStudent(Student student) {
         com.student.management.entity.Student student1 = new com.student.management.entity.Student();
         student1.setFirstName(student.getFirstName());
         student1.setFamilyName(student.getFamilyName());
@@ -27,7 +27,7 @@ public class StudentService {
     }
 
 
-    public List<Student> getAllStudents(){
+    public List<Student> getAllStudents() {
         return studentRepository.findAll().stream().map(student -> {
             Student student1 = new Student();
             student1.setId(student.getId());
@@ -39,10 +39,10 @@ public class StudentService {
         }).collect(Collectors.toList());
     }
 
-    public String deleteStudent(Long studentId) throws Exception {
+    public String deleteStudent(Long studentId) throws RuntimeException {
         Optional<com.student.management.entity.Student> student = studentRepository.findById(studentId);
-        if(!student.isPresent()){
-            throw new Exception("Student not found");
+        if (!student.isPresent()) {
+            throw new RuntimeException("Student not found");
         }
         studentRepository.delete(student.get());
         return "Student Deleted Successfully";

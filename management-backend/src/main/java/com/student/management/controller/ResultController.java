@@ -1,8 +1,7 @@
 package com.student.management.controller;
 
-import com.student.management.model.Course;
-import com.student.management.service.CourseService;
-import com.student.management.service.StudentService;
+import com.student.management.model.Result;
+import com.student.management.service.ResultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
@@ -10,22 +9,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class CourseController {
+public class ResultController {
 
     @Autowired
-    private CourseService courseService;
-    @PostMapping(path = "/addcourse")
-    public Course addStudent(@RequestBody Course course){
-        return courseService.addCourse(course);
+    private ResultService resultService;
+
+    @PostMapping(path = "/addresult")
+    public Result addResult(@RequestBody Result result) {
+        return resultService.addResult(result);
     }
 
-    @GetMapping(path = "/course")
-    public List<Course> getStudents(){
-        return courseService.getAllCourses();
+    @GetMapping(path = "/result")
+    public List<Result> getResults() {
+        return resultService.findAllResults();
     }
 
-    @DeleteMapping(path = "/course/{id}")
-    public String deleteStudent(@PathVariable @NonNull Long id) {
-        return courseService.deleteCourse(id);
+    @DeleteMapping(path = "/result/{id}")
+    public String deleteResult(@PathVariable @NonNull Long id) {
+        return resultService.deleteResult(id);
     }
 }

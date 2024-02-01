@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Result {
     private Long id;
-    private Course course;
-    private Student student;
-    private Grade grade;
+    private Long courseId;
+    private Long studentId;
+    private String grade;
 }

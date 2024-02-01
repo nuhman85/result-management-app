@@ -8,12 +8,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories("com.student.management.*")
-@ComponentScan(basePackages = { "com.student.management.*" })
+@ComponentScan(basePackages = {"com.student.management.*"})
 @EntityScan("com.student.management.*")
 public class StudentManagementApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(StudentManagementApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(StudentManagementApplication.class, args);
+    }
 
 }
