@@ -23,14 +23,15 @@ import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from "react-pro-sideb
 import Results from './components/Results/Results';
 import Students from './components/Students/Students';
 import Courses from './components/Courses/Courses';
+import AddNewCourse from './components/AddNewCourse/AddNewCourse';
+import AddNewResult from './components/AddNewResult/AddNewResult';
 
 
 const Home = () => {
   return (
     <>
       <h1 className="header">WELCOME TO STUDENT PRO</h1>
-      <h3>Bank of the free</h3>
-      <p>Lorem ipsum dolor sit amet...</p>
+
     </>
   );
 };
@@ -38,22 +39,14 @@ const Home = () => {
 const Dashboard = () => {
   return (
     <>
-      <h1 className="header"> DASHBOARD PAGE</h1>
+      <h1 className="header"> STUDENT RESULT MANAGEMENT </h1>
       <h3>Welcome User</h3>
-      <p>Lorem ipsum dolor sit amet...</p>
+  
     </>
   );
 };
 
-const Transactions = () => {
-  return (
-    <>
-      <h1 className="header">KEEP TRACK OF YOUR SPENDINGS</h1>
-      <h3>Seamless Transactions</h3>
-      <p>Lorem ipsum dolor sit amet...</p>
-    </>
-  );
-};
+
 
 function App() {
   const { collapseSidebar } = useProSidebar();
@@ -79,13 +72,18 @@ function App() {
           component={<Link to="dashboard" className="link" />}
           icon={<GridViewRoundedIcon />}
         >
-          Dashboard
+          Home
         </MenuItem>
-        <MenuItem component={<Link to="addNewStudent" className="link" />} icon={<ReceiptRoundedIcon />}> Add New Student </MenuItem>
+        <MenuItem component={<Link to="addNewStudent" className="link" />} 
+        icon={<LogoutRoundedIcon />}> Add New Student </MenuItem>
         <MenuItem component={<Link to="students" className="link" />} 
         icon={<LogoutRoundedIcon />}> Student List</MenuItem>
+        <MenuItem component={<Link to="addNewCourse" className="link" />} 
+        icon={<LogoutRoundedIcon />}> Add New Courses</MenuItem>
         <MenuItem component={<Link to="courses" className="link" />} 
         icon={<LogoutRoundedIcon />}> Courses List</MenuItem>
+        <MenuItem component={<Link to="addNewResult" className="link" />} 
+        icon={<LogoutRoundedIcon />}> Add New Results</MenuItem>
            <MenuItem component={<Link to="results" className="link" />} 
         icon={<LogoutRoundedIcon />}> Results List</MenuItem>
       </Menu>
@@ -98,6 +96,8 @@ function App() {
         <Route path="students" element={<Students />} />
         <Route path="courses" element={<Courses />} />
         <Route path="addNewStudent" element={<AddNewStudent />} />
+        <Route path="addNewCourse" element={<AddNewCourse />} />
+        <Route path="addNewResult" element={<AddNewResult />} />
       </Routes>
     </section>
   </div>
