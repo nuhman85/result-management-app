@@ -15,16 +15,19 @@ public class CourseController {
     private CourseService courseService;
 
     @PostMapping(path = "/addcourse")
+    @CrossOrigin(origins = "*")
     public Course addCourse(@RequestBody Course course) {
         return courseService.addCourse(course);
     }
 
     @GetMapping(path = "/course")
+    @CrossOrigin(origins = "*")
     public List<Course> getCourses() {
         return courseService.getAllCourses();
     }
 
     @DeleteMapping(path = "/course/{id}")
+    @CrossOrigin(origins = "*")
     public String deleteCourse(@PathVariable @NonNull Long id) {
         return courseService.deleteCourse(id);
     }

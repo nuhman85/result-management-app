@@ -1,6 +1,8 @@
 package com.student.management.service;
 
+import com.student.management.entity.Result;
 import com.student.management.model.Student;
+import com.student.management.repository.ResultRepository;
 import com.student.management.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ public class StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
+
+    @Autowired
+    private ResultRepository resultRepository;
 
     public Student addStudent(Student student) {
         com.student.management.entity.Student student1 = new com.student.management.entity.Student();
@@ -44,6 +49,8 @@ public class StudentService {
         if (!student.isPresent()) {
             throw new RuntimeException("Student not found");
         }
+        resultRepository.findAllByStudent(student.get()).forEach(x->
+                resultRepository.delete(x));
         studentRepository.delete(student.get());
         return "Student Deleted Successfully";
     }

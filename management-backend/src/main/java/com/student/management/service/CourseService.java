@@ -2,6 +2,7 @@ package com.student.management.service;
 
 import com.student.management.model.Course;
 import com.student.management.repository.CourseRepository;
+import com.student.management.repository.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,9 @@ import java.util.stream.Collectors;
 public class CourseService {
     @Autowired
     private CourseRepository courseRepository;
+
+    @Autowired
+    private ResultRepository resultRepository;
 
     public List<Course> getAllCourses() {
         return courseRepository.findAll()
@@ -38,6 +42,8 @@ public class CourseService {
         if (!course.isPresent()) {
             throw new RuntimeException("Course not found");
         }
+
+        resultRepository.findAllByCourse(course.get()).forEach(x-> resultRepository.delete(x));
         courseRepository.deleteById(id);
         return "Course Deleted Successfully";
     }

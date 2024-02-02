@@ -3,6 +3,7 @@ package com.student.management.service;
 import com.student.management.entity.Course;
 import com.student.management.entity.Student;
 import com.student.management.model.Result;
+import com.student.management.model.ResultResponse;
 import com.student.management.repository.CourseRepository;
 import com.student.management.repository.ResultRepository;
 import com.student.management.repository.StudentRepository;
@@ -22,13 +23,15 @@ public class ResultService {
     @Autowired
     private StudentRepository studentRepository;
 
-    public List<Result> findAllResults() {
+    public List<ResultResponse> findAllResults() {
         return resultRepository.findAll().stream()
                 .map(result -> {
-                    Result result1 = new Result();
+                    ResultResponse result1 = new ResultResponse();
                     result1.setId(result.getId());
                     result1.setStudentId(result.getStudent().getId());
+                    result1.setStudentName(result.getStudent().getFirstName()+" "+result.getStudent().getFamilyName());
                     result1.setCourseId(result.getCourse().getId());
+                    result1.setCourseName(result.getCourse().getName());
                     result1.setGrade(result.getGrade());
                     return result1;
                 }).collect(Collectors.toList());

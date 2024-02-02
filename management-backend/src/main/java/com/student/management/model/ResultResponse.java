@@ -7,9 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Result {
-    private Long id;
-    private Long courseId;
-    private Long studentId;
-    private String grade;
+public class ResultResponse extends Result{
+    private String studentName;
+    private String courseName;
 }
