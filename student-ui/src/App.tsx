@@ -20,6 +20,9 @@ import ShieldRoundedIcon from "@mui/icons-material/ShieldRounded";
 import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from "react-pro-sidebar";
+import Results from './components/Results/Results';
+import Students from './components/Students/Students';
+import Courses from './components/Courses/Courses';
 
 
 const Home = () => {
@@ -78,16 +81,23 @@ function App() {
         >
           Dashboard
         </MenuItem>
-        <MenuItem icon={<ReceiptRoundedIcon />}> Invoices </MenuItem>
-        
-        <MenuItem icon={<LogoutRoundedIcon />}> Logout </MenuItem>
+        <MenuItem component={<Link to="addNewStudent" className="link" />} icon={<ReceiptRoundedIcon />}> Add New Student </MenuItem>
+        <MenuItem component={<Link to="students" className="link" />} 
+        icon={<LogoutRoundedIcon />}> Student List</MenuItem>
+        <MenuItem component={<Link to="courses" className="link" />} 
+        icon={<LogoutRoundedIcon />}> Courses List</MenuItem>
+           <MenuItem component={<Link to="results" className="link" />} 
+        icon={<LogoutRoundedIcon />}> Results List</MenuItem>
       </Menu>
     </Sidebar>
     <section>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path="transactions" element={<Transactions />} />
+        <Route path="results" element={<Results />} />
+        <Route path="students" element={<Students />} />
+        <Route path="courses" element={<Courses />} />
+        <Route path="addNewStudent" element={<AddNewStudent />} />
       </Routes>
     </section>
   </div>
